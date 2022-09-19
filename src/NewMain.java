@@ -12,210 +12,220 @@ public class NewMain {
 		Stack<Integer> aux = new Stack<Integer>();
 		Stack<Integer> destino = new Stack<Integer>();
 		boolean flag = false;
+		int valida = 0;
 		int movOrigem = 0;
 		int movDestino = 0;
 		int quantDisco = 0;
 
 		quantDisco = Integer.parseInt(JOptionPane.showInputDialog("Quantidade de discos: "));
 
-		if (quantDisco >= 3 || quantDisco <= 8) {
-
-			int z = quantDisco;
-
-			while (z > 0) {
-
-				origem.push(z);
-				z--;
-			}
-		}
-
-		lista.addLast(origem);
-		lista.addLast(aux);
-		lista.addLast(destino);
-		
 		do {
-			
-			movOrigem = Integer.parseInt(JOptionPane.showInputDialog("Origem: "));
-			movDestino = Integer.parseInt(JOptionPane.showInputDialog("Destino: "));
+			if (quantDisco >= 3 && quantDisco <= 8) {
 
-			switch (movOrigem) {
+				int z = quantDisco;
+				valida = 0;
 
-				case 1:
+				while (z > 0) {
 
-					if (movDestino == 2) {
+					origem.push(z);
+					z--;
+				}
 
-						Stack<Integer> pilhaOrigem = lista.get(0);
-						Stack<Integer> pilhaDestino = lista.get(1);
-						Integer origemAux = pilhaOrigem.peek();
+				lista.addLast(origem);
+				lista.addLast(aux);
+				lista.addLast(destino);
+				System.out.println("Torre 1: " + lista.get(0) + " Torre 2: " + lista.get(1) + " Torre 3: " + lista.get(2));
 
-						if (pilhaDestino.isEmpty()) {
-							
-							flag = false;
-							pilhaDestino.push(pilhaOrigem.pop());
-						} else {
-							
-							flag = false;
-							Integer destinoAux = pilhaDestino.peek();
-							
-							if (origemAux < destinoAux) {
+				do {
 
-								pilhaDestino.push(pilhaOrigem.pop());
-							} else {
+					movOrigem = Integer.parseInt(JOptionPane.showInputDialog("Origem: "));
+					movDestino = Integer.parseInt(JOptionPane.showInputDialog("Destino: "));
 
-								flag = true;
+					switch (movOrigem) {
+
+						case 1:
+
+							if (movDestino == 2) {
+
+								Stack<Integer> pilhaOrigem = lista.get(0);
+								Stack<Integer> pilhaDestino = lista.get(1);
+								Integer origemAux = pilhaOrigem.peek();
+
+								if (pilhaDestino.isEmpty()) {
+
+									flag = false;
+									pilhaDestino.push(pilhaOrigem.pop());
+								} else {
+
+									flag = false;
+									Integer destinoAux = pilhaDestino.peek();
+
+									if (origemAux < destinoAux) {
+
+										pilhaDestino.push(pilhaOrigem.pop());
+									} else {
+
+										flag = true;
+									}
+								}
 							}
-						}
+
+							if (movDestino == 3) {
+
+								Stack<Integer> pilhaOrigem = lista.get(0);
+								Stack<Integer> pilhaDestino = lista.get(2);
+								Integer origemAux = pilhaOrigem.peek();
+
+								if (pilhaDestino.isEmpty()) {
+
+									flag = false;
+									pilhaDestino.push(pilhaOrigem.pop());
+								} else {
+
+									flag = false;
+									Integer destinoAux = pilhaDestino.peek();
+
+									if (origemAux < destinoAux) {
+
+										pilhaDestino.push(pilhaOrigem.pop());
+									} else {
+
+										flag = true;
+									}
+								}
+							}
+
+							break;
+						case 2:
+
+							if (movDestino == 1) {
+
+								Stack<Integer> pilhaOrigem = lista.get(1);
+								Stack<Integer> pilhaDestino = lista.get(0);
+								Integer origemAux = pilhaOrigem.peek();
+
+								if (pilhaDestino.isEmpty()) {
+
+									flag = false;
+									pilhaDestino.push(pilhaOrigem.pop());
+								} else {
+
+									Integer destinoAux = pilhaDestino.peek();
+
+									if (origemAux < destinoAux) {
+
+										flag = false;
+										pilhaDestino.push(pilhaOrigem.pop());
+									} else {
+
+										flag = true;
+									}
+								}
+							}
+
+							if (movDestino == 3) {
+
+								Stack<Integer> pilhaOrigem = lista.get(1);
+								Stack<Integer> pilhaDestino = lista.get(2);
+								Integer origemAux = pilhaOrigem.peek();
+
+								if (pilhaDestino.isEmpty()) {
+
+									flag = false;
+									pilhaDestino.push(pilhaOrigem.pop());
+								} else {
+
+									Integer destinoAux = pilhaDestino.peek();
+
+									if (origemAux < destinoAux) {
+
+										flag = false;
+										pilhaDestino.push(pilhaOrigem.pop());
+									} else {
+
+										flag = true;
+									}
+								}
+							}
+
+							break;
+
+						case 3:
+
+							if (movDestino == 1) {
+
+								Stack<Integer> pilhaOrigem = lista.get(2);
+								Stack<Integer> pilhaDestino = lista.get(0);
+								Integer origemAux = pilhaOrigem.peek();
+
+								if (pilhaDestino.isEmpty()) {
+
+									flag = false;
+									pilhaDestino.push(pilhaOrigem.pop());
+								} else {
+
+									Integer destinoAux = pilhaDestino.peek();
+
+									if (origemAux < destinoAux) {
+
+										flag = false;
+										pilhaDestino.push(pilhaOrigem.pop());
+									} else {
+
+										flag = true;
+									}
+								}
+							}
+
+							if (movDestino == 2) {
+
+								Stack<Integer> pilhaOrigem = lista.get(2);
+								Stack<Integer> pilhaDestino = lista.get(1);
+								Integer origemAux = pilhaOrigem.peek();
+
+								if (pilhaDestino.isEmpty()) {
+
+									flag = false;
+									pilhaDestino.push(pilhaOrigem.pop());
+								} else {
+
+									Integer destinoAux = pilhaDestino.peek();
+
+									if (origemAux < destinoAux) {
+										flag = false;
+										pilhaDestino.push(pilhaOrigem.pop());
+									} else {
+
+										flag = true;
+									}
+								}
+							}
+
+							break;
+
 					}
 
-					if (movDestino == 3) {
+					System.out.println("Torre 1: " + lista.get(0) + " Torre 2: " + lista.get(1) + " Torre 3: " + lista.get(2));
 
-						Stack<Integer> pilhaOrigem = lista.get(0);
-						Stack<Integer> pilhaDestino = lista.get(2);
-						Integer origemAux = pilhaOrigem.peek();
-						
-						if (pilhaDestino.isEmpty()) {
-							
-							flag = false;
-							pilhaDestino.push(pilhaOrigem.pop());
-						} else {
-							
-							flag = false;
-							Integer destinoAux = pilhaDestino.peek();
+					if (flag) {
 
-							if (origemAux < destinoAux) {
-
-								pilhaDestino.push(pilhaOrigem.pop());
-							} else {
-
-								flag = true;
-							}
-						}
+						System.out.println("Movimento invalido!!");
 					}
 
-					break;
-				case 2:
+					if (destino.size() == quantDisco) {
 
-					if (movDestino == 1) {
-
-						Stack<Integer> pilhaOrigem = lista.get(1);
-						Stack<Integer> pilhaDestino = lista.get(0);
-						Integer origemAux = pilhaOrigem.peek();
-
-						if (pilhaDestino.isEmpty()) {
-							
-							flag = false;
-							pilhaDestino.push(pilhaOrigem.pop());
-						} else {
-
-							Integer destinoAux = pilhaDestino.peek();
-
-							if (origemAux < destinoAux) {
-								
-								flag = false;
-								pilhaDestino.push(pilhaOrigem.pop());
-							} else {
-
-								flag = true;
-							}
-						}
+						System.out.println("You win's!!!");
 					}
 
-					if (movDestino == 3) {
+				} while (destino.size() != quantDisco);
+			} else {
 
-						Stack<Integer> pilhaOrigem = lista.get(1);
-						Stack<Integer> pilhaDestino = lista.get(2);
-						Integer origemAux = pilhaOrigem.peek();
-						
-						if (pilhaDestino.isEmpty()) {
-							
-							flag = false;
-							pilhaDestino.push(pilhaOrigem.pop());
-						} else {
-
-							Integer destinoAux = pilhaDestino.peek();
-
-							if (origemAux < destinoAux) {
-								
-								flag = false;
-								pilhaDestino.push(pilhaOrigem.pop());
-							} else {
-
-								flag = true;
-							}
-						}
-					}
-
-					break;
-
-				case 3:
-					
-					if (movDestino == 1) {
-
-						Stack<Integer> pilhaOrigem = lista.get(2);
-						Stack<Integer> pilhaDestino = lista.get(0);
-						Integer origemAux = pilhaOrigem.peek();
-
-						if (pilhaDestino.isEmpty()) {
-							
-							flag = false;
-							pilhaDestino.push(pilhaOrigem.pop());
-						} else {
-
-							Integer destinoAux = pilhaDestino.peek();
-
-							if (origemAux < destinoAux) {
-								
-								flag = false;
-								pilhaDestino.push(pilhaOrigem.pop());
-							} else {
-
-								flag = true;
-							}
-						}
-					}
-
-					if (movDestino == 2) {
-
-						Stack<Integer> pilhaOrigem = lista.get(2);
-						Stack<Integer> pilhaDestino = lista.get(1);
-						Integer origemAux = pilhaOrigem.peek();
-
-						if (pilhaDestino.isEmpty()) {
-							
-							flag = false;
-							pilhaDestino.push(pilhaOrigem.pop());
-						} else {
-
-							Integer destinoAux = pilhaDestino.peek();
-
-							if (origemAux < destinoAux) {
-								flag = false;
-								pilhaDestino.push(pilhaOrigem.pop());
-							} else {
-
-								flag = true;
-							}
-						}
-					}
-
-					break;
-
+				JOptionPane.showMessageDialog(null, "Quantidade de discos invalida!!" + "\n"
+					+ "         Digite novamente   -2   ");
+				quantDisco = Integer.parseInt(JOptionPane.showInputDialog("Quantidade de discos: "));
+				valida = -1;
 			}
 
-			System.out.println("" + lista);
-			
-			if (flag) {
-				
-				System.out.println("Movimento invalido!!");
-			}
-			
-			if (destino.size() == quantDisco) {
-				
-				System.out.println("Teteu gostoso<3!!");
-			}
-			
-		} while (destino.size() != quantDisco);
-
+		} while (valida == -1);
 	}
-
 }
